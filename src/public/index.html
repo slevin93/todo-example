@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>Chat App</title>
+    <meta name="metro4:init" content="false" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.korzh.com/metroui/v4.5.1/css/metro-all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
+    <style>
+      .isComplete {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" class="text-center">
+      <div class="container">
+        <h1>ToDo</h1>
+        <br>
+        <form @submit.prevent="addItem()">
+          <input v-model="todoItem.item" type="text" data-role="input">
+          <br>
+          <input type="submit" value="Add">
+        </form>
+        <hr>
+        <table class="table">
+          <tbody v-for="todo in todoItems" class="text-center">
+            <tr>
+                <td :class="todo.isActive === false ? 'isComplete' : ''">{{ todo.item }}</td>
+                <td><button class="button alert" @click="updateItem(todo)" :disabled="todo.isActive === false">Complete</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="https://cdn.korzh.com/metroui/v4/js/metro.min.js"></script>
+    <script src="/public/app.js"></script>
+  </body>
+</html>
